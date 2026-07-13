@@ -1,52 +1,26 @@
-name: MOEX OFZ data export
+name: Temporary MOEX cleanup
 
 on:
   push:
     branches:
       - main
     paths:
-      - .moex-run
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+      - .cleanup-run
 
 permissions:
   contents: write
 
 jobs:
-  aggregate:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+  cleanup:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Aggregate portfolio backtest
-        run: python aggregate_moex.py
-      - name: Commit aggregate export
+      - name: Remove temporary MOEX files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add moex_data
-          git commit -m "Add MOEX portfolio backtest aggregate [skip ci]"
+          git rm -rf moex_data moex_fetch.py process_moex.py aggregate_moex.py .moex-run .cleanup-run .github/workflows/moex-ofz-data.yml
+          git commit -m "Remove temporary MOEX calculation files [skip ci]"
           git push
-
-  package:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Upload actual MOEX data
-        uses: actions/upload-artifact@v4
-        with:
-          name: moex-ofz-actual-data
-          path: moex_data
-          if-no-files-found: error
-          retention-days: 1
