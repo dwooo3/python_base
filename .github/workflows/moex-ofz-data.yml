@@ -1,0 +1,30 @@
+name: MOEX OFZ data export
+
+on:
+  push:
+    branches:
+      - tmp/moex-ofz-var-20260713
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Fetch actual MOEX ISS data
+        run: python moex_fetch.py
+      - name: Upload data
+        uses: actions/upload-artifact@v4
+        with:
+          name: moex-ofz-data
+          path: moex_data
+          if-no-files-found: error
+          retention-days: 1
