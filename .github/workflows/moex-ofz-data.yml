@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - .moex-run
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -13,6 +16,7 @@ permissions:
 
 jobs:
   aggregate:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -31,3 +35,18 @@ jobs:
           git add moex_data
           git commit -m "Add MOEX portfolio backtest aggregate [skip ci]"
           git push
+
+  package:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Upload actual MOEX data
+        uses: actions/upload-artifact@v4
+        with:
+          name: moex-ofz-actual-data
+          path: moex_data
+          if-no-files-found: error
+          retention-days: 1
