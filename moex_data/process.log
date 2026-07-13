@@ -1,0 +1,177 @@
+{
+  "start": "2022-07-07",
+  "end": "2026-07-10",
+  "observations": 1021,
+  "target_dmod": 0.6,
+  "portfolio_dmod": 0.5999999999999998,
+  "short_rate": 0.159,
+  "fixed_share": 0.1423401794221398,
+  "weights": {
+    "SU29007RMFS0": 0.10720747757223252,
+    "SU29008RMFS8": 0.10720747757223252,
+    "SU29009RMFS6": 0.10720747757223252,
+    "SU29010RMFS4": 0.10720747757223252,
+    "SU29013RMFS8": 0.10720747757223252,
+    "SU29015RMFS3": 0.10720747757223252,
+    "SU29017RMFS9": 0.10720747757223252,
+    "SU29018RMFS7": 0.10720747757223252,
+    "SU26228RMFS5": 0.0711700897110699,
+    "SU26233RMFS5": 0.0711700897110699
+  },
+  "metadata": {
+    "SU29007RMFS0": {
+      "name": "ОФЗ 29007",
+      "kind": "floater",
+      "isin": "RU000A0JV4M0",
+      "maturity": "2027-03-03",
+      "coupon_frequency": 2.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29008RMFS8": {
+      "name": "ОФЗ 29008",
+      "kind": "floater",
+      "isin": "RU000A0JV4P3",
+      "maturity": "2029-10-03",
+      "coupon_frequency": 2.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29009RMFS6": {
+      "name": "ОФЗ 29009",
+      "kind": "floater",
+      "isin": "RU000A0JV4N8",
+      "maturity": "2032-05-05",
+      "coupon_frequency": 2.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29010RMFS4": {
+      "name": "ОФЗ 29010",
+      "kind": "floater",
+      "isin": "RU000A0JV4Q1",
+      "maturity": "2034-12-06",
+      "coupon_frequency": 2.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29013RMFS8": {
+      "name": "ОФЗ 29013",
+      "kind": "floater",
+      "isin": "RU000A101KT1",
+      "maturity": "2030-09-18",
+      "coupon_frequency": 4.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29015RMFS3": {
+      "name": "ОФЗ 29015",
+      "kind": "floater",
+      "isin": "RU000A1025A7",
+      "maturity": "2028-10-18",
+      "coupon_frequency": 4.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29017RMFS9": {
+      "name": "ОФЗ 29017",
+      "kind": "floater",
+      "isin": "RU000A1028D5",
+      "maturity": "2032-08-25",
+      "coupon_frequency": 4.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU29018RMFS7": {
+      "name": "ОФЗ 29018",
+      "kind": "floater",
+      "isin": "RU000A102A31",
+      "maturity": "2031-11-26",
+      "coupon_frequency": 4.0,
+      "duration": 0.0027385330773717752,
+      "ytm": null
+    },
+    "SU26228RMFS5": {
+      "name": "ОФЗ 26228",
+      "kind": "fixed",
+      "isin": "RU000A100A82",
+      "maturity": "2030-04-10",
+      "coupon_frequency": 2.0,
+      "duration": 2.964098453970438,
+      "ytm": 0.1496
+    },
+    "SU26233RMFS5": {
+      "name": "ОФЗ 26233",
+      "kind": "fixed",
+      "isin": "RU000A101F94",
+      "maturity": "2035-07-18",
+      "coupon_frequency": 2.0,
+      "duration": 5.433407754585809,
+      "ytm": 0.15810000000000002
+    }
+  },
+  "quality": {
+    "SU29007RMFS0": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29008RMFS8": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29009RMFS6": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29010RMFS4": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29013RMFS8": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29015RMFS3": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29017RMFS9": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU29018RMFS7": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU26228RMFS5": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    },
+    "SU26233RMFS5": {
+      "observations": 1021,
+      "stale_days": 0,
+      "stale_share": 0.0
+    }
+  },
+  "sources": {
+    "SU29007RMFS0": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29007RMFS0.json?from=2022-07-07&till=2026-07-10",
+    "SU29008RMFS8": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29008RMFS8.json?from=2022-07-07&till=2026-07-10",
+    "SU29009RMFS6": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29009RMFS6.json?from=2022-07-07&till=2026-07-10",
+    "SU29010RMFS4": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29010RMFS4.json?from=2022-07-07&till=2026-07-10",
+    "SU29013RMFS8": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29013RMFS8.json?from=2022-07-07&till=2026-07-10",
+    "SU29015RMFS3": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29015RMFS3.json?from=2022-07-07&till=2026-07-10",
+    "SU29017RMFS9": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29017RMFS9.json?from=2022-07-07&till=2026-07-10",
+    "SU29018RMFS7": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU29018RMFS7.json?from=2022-07-07&till=2026-07-10",
+    "SU26228RMFS5": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU26228RMFS5.json?from=2022-07-07&till=2026-07-10",
+    "SU26233RMFS5": "https://iss.moex.com/iss/history/engines/stock/markets/bonds/boards/TQOB/securities/SU26233RMFS5.json?from=2022-07-07&till=2026-07-10"
+  }
+}
