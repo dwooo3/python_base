@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - tmp/moex-ofz-var-20260713
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
