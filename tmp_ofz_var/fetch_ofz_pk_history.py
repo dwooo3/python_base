@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Temporary PR run used only to export official MOEX data as an artifact.
 from __future__ import annotations
 import json, time, urllib.parse, urllib.request
 from datetime import datetime, timezone
