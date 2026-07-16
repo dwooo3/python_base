@@ -72,4 +72,5 @@ def main():
     OUT.write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     print(json.dumps(latest,ensure_ascii=False))
 
-if __name__=='__main__': main()
+if __name__=='__main__':
+    main()
