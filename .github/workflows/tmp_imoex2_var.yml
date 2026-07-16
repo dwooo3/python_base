@@ -1,0 +1,25 @@
+name: Temporary IMOEX2 history export
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tmp_imoex2_var/fetch_imoex2_history.py'
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch official MOEX IMOEX2 history
+        run: python3 tmp_imoex2_var/fetch_imoex2_history.py
+      - name: Upload IMOEX2 payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: imoex2-history
+          path: tmp_imoex2_var/imoex2_history.json
+          if-no-files-found: error
+          retention-days: 1
