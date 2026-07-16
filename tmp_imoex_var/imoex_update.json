@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-07-16T19:20:13+00:00",
+  "source": "MOEX ISS official IMOEX history",
+  "endpoint": "https://iss.moex.com/iss/history/engines/stock/markets/index/securities/IMOEX.json",
+  "date_from": "2026-07-10",
+  "date_to": "2026-07-16",
+  "rows": [
+    {
+      "Date": "2026-07-10",
+      "Open": 2171.13,
+      "High": 2178.7,
+      "Low": 2136.92,
+      "Close": 2145.65
+    },
+    {
+      "Date": "2026-07-13",
+      "Open": 2152.8,
+      "High": 2200.99,
+      "Low": 2144.39,
+      "Close": 2164.42
+    },
+    {
+      "Date": "2026-07-14",
+      "Open": 2179.56,
+      "High": 2194.92,
+      "Low": 2155.42,
+      "Close": 2170.78
+    },
+    {
+      "Date": "2026-07-15",
+      "Open": 2143.35,
+      "High": 2146.43,
+      "Low": 2103.04,
+      "Close": 2111.9
+    },
+    {
+      "Date": "2026-07-16",
+      "Open": 2072.9,
+      "High": 2074.72,
+      "Low": 2018.61,
+      "Close": 2022.27
+    }
+  ]
+}
