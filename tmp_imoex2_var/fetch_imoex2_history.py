@@ -57,12 +57,13 @@ def fetch_history():
 
 def main():
     rows=fetch_history()
-    if len(rows)<900 or rows[-1]['Date']!=DATE_TO:
-        raise RuntimeError(f'rows={len(rows)}, last={rows[-1]["Date"] if rows else None}')
+    if len(rows)<900:
+        raise RuntimeError(f'Insufficient rows={len(rows)}')
     out={
         'generated_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'source':'MOEX ISS official index history','secid':SECID,
-        'date_from':DATE_FROM,'date_to':DATE_TO,'rows':rows
+        'date_from':DATE_FROM,'requested_date_to':DATE_TO,
+        'actual_date_to':rows[-1]['Date'],'rows':rows
     }
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(out,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
