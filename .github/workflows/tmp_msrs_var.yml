@@ -1,0 +1,21 @@
+name: Temporary MSRS history export
+on:
+  pull_request:
+    paths:
+      - 'tmp_msrs_var/**'
+      - '.github/workflows/tmp_msrs_var.yml'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch official MOEX MSRS history
+        run: python tmp_msrs_var/fetch_msrs_history.py
+      - name: Upload MSRS payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: msrs-history
+          path: tmp_msrs_var/msrs_history.json
+          retention-days: 1
