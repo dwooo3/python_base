@@ -14,46 +14,46 @@ BONDS={
  'OFZ_PK':['SU29007RMFS0','SU29008RMFS8','SU29009RMFS6','SU29010RMFS4','SU29013RMFS8']
 }
 
-def get_json(url,retries=8):
+def get_json(url,retries=6):
     last=None
     for attempt in range(retries):
         try:
             req=urllib.request.Request(url,headers={'User-Agent':UA})
-            with urllib.request.urlopen(req,timeout=60) as r:
+            with urllib.request.urlopen(req,timeout=45) as r:
                 return json.loads(r.read().decode('utf-8'))
         except Exception as exc:
-            last=exc; time.sleep(min(2**attempt,20))
+            last=exc; time.sleep(min(2**attempt,12))
     raise RuntimeError(f'Failed {url}: {last}')
 
-def fetch(endpoint):
+def fetch_candles(endpoint):
     rows=[]; start=0
     while True:
-        q=urllib.parse.urlencode({'from':DATE_FROM,'till':DATE_TO,'start':start,'iss.meta':'off','iss.only':'history'})
-        p=get_json(f'{BASE}/{endpoint}.json?{q}')['history']
+        q=urllib.parse.urlencode({'from':DATE_FROM,'till':DATE_TO,'interval':24,'start':start,'iss.meta':'off','iss.only':'candles'})
+        p=get_json(f'{BASE}/{endpoint}/candles.json?{q}')['candles']
         data=p.get('data',[])
         if not data: break
         for raw in data:
-            rec=dict(zip(p['columns'],raw)); d=str(rec.get('TRADEDATE',''))[:10]
-            close=rec.get('CLOSE')
+            rec=dict(zip(p['columns'],raw)); d=str(rec.get('begin',''))[:10]
+            close=rec.get('close')
             if d and close is not None:
-                rows.append({'Date':d,'Open':rec.get('OPEN'),'High':rec.get('HIGH'),'Low':rec.get('LOW'),'Close':close,'Value':rec.get('VALUE'),'Volume':rec.get('VOLUME')})
+                rows.append({'Date':d,'Open':rec.get('open'),'High':rec.get('high'),'Low':rec.get('low'),'Close':close,'Value':rec.get('value'),'Volume':rec.get('volume')})
         start += len(data)
-        if len(data)<100: break
-        time.sleep(0.1)
+        if len(data)<500: break
+        time.sleep(0.05)
     by={r['Date']:r for r in rows}
     return [by[d] for d in sorted(by)]
 
 def main():
     out={'requested_to':DATE_TO,'indexes':{},'bonds':{}}
     for secid in INDEXES:
-        rows=fetch(f'history/engines/stock/markets/index/securities/{secid}')
+        rows=fetch_candles(f'engines/stock/markets/index/securities/{secid}')
         if len(rows)<900: raise RuntimeError(f'{secid}: only {len(rows)} rows')
         out['indexes'][secid]={'rows':rows,'actual_to':rows[-1]['Date']}
         print(secid,len(rows),rows[-1]['Date'],rows[-1]['Close'])
     for group,secids in BONDS.items():
         out['bonds'][group]={}
         for secid in secids:
-            rows=fetch(f'history/engines/stock/markets/bonds/boards/TQOB/securities/{secid}')
+            rows=fetch_candles(f'engines/stock/markets/bonds/securities/{secid}')
             if len(rows)<900: raise RuntimeError(f'{secid}: only {len(rows)} rows')
             out['bonds'][group][secid]={'rows':rows,'actual_to':rows[-1]['Date']}
             print(secid,len(rows),rows[-1]['Date'],rows[-1]['Close'])
