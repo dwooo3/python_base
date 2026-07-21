@@ -1,0 +1,17 @@
+name: Temporary MOEX VaR export 20260722
+on:
+  pull_request:
+    paths:
+      - 'tmp_moex_var_20260722/**'
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch official MOEX history
+        run: python tmp_moex_var_20260722/fetch.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moex-var-history-20260722
+          path: tmp_moex_var_20260722/history.json
+          retention-days: 1
